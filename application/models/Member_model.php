@@ -133,6 +133,7 @@ class Member_model extends CI_Model {
             $this->db->from('tbl_member');
             $this->db->where('m_id',$m_id);
             $query = $this->db->get();
+            //return $query->result();
             if($query->num_rows() > 0)
             {
                 $data = $query->row();
