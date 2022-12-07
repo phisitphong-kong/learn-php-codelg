@@ -26,11 +26,18 @@ class Member_model extends CI_Model {
     {
         $data = array(
 			'm_name' => $this->input->post('m_name'),
-			'm_lname' => $this->input->post('m_lname')
-
+			'm_lname' => $this->input->post('m_lname'),
+            'm_id' => $this->input->post('m_id')
 		);
-        $this->db->where('m_id',$this->input->post('m_id'));
-		$query=$this->db->update('tbl_member',$data);
+        $sql = "UPDATE tbl_member SET m_name = ?,m_lname = ? WHERE m_id = ?";
+        $query=$this->db->query($sql,$data);
+
+        // $data = array(
+		// 	'm_name' => $this->input->post('m_name'),
+		// 	'm_lname' => $this->input->post('m_lname')
+        // );
+        // $this->db->where('m_id',$this->input->post('m_id'));
+		// $query=$this->db->update('tbl_member',$data);
 
         // if($query)
         // {
