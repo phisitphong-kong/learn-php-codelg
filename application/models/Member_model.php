@@ -23,7 +23,7 @@ class Member_model extends CI_Model {
 		 
     }
     public function editmember()
-    {
+    {   //1.
         $data = array(
 			'm_name' => $this->input->post('m_name'),
 			'm_lname' => $this->input->post('m_lname'),
@@ -31,7 +31,7 @@ class Member_model extends CI_Model {
 		);
         $sql = "UPDATE tbl_member SET m_name = ?,m_lname = ? WHERE m_id = ?";
         $query=$this->db->query($sql,$data);
-
+        //2.
         // $data = array(
 		// 	'm_name' => $this->input->post('m_name'),
 		// 	'm_lname' => $this->input->post('m_lname')
@@ -141,8 +141,11 @@ class Member_model extends CI_Model {
             return FALSE;
     }
     public function deldata($m_id)
-    {
-            $this->db->delete('tbl_member',array('m_id'=>$m_id));
+    {       //1.
+            //$this->db->delete('tbl_member',array('m_id'=>$m_id));
+            //2.
+            $this->db->query("DELETE FROM tbl_member WHERE m_id = $m_id");
+            
     }
     public function addmember2()
     {
